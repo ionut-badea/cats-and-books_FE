@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+$primary: #FFB893;
+$link: #4F6043;
+$info: #FFDCBD;
+$success: #C8E2C4;
+$warning: #FF9E4F;
+$danger: #CB2C30;
+
+$footer-margin: 5rem 0rem 0rem 0rem;
+$footer-padding: 3rem 1.5rem 1rem !important;
+
+.footer{
+    margin: $footer-margin;
+}
+
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/components/_all.sass";
+@import "../../node_modules/bulma/sass/elements/_all.sass";
+@import "../../node_modules/bulma/sass/form/_all.sass";
+@import "../../node_modules/bulma/sass/grid/_all.sass";
+@import "../../node_modules/bulma/sass/layout/_all.sass";
+@import "../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss"
