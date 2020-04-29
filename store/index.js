@@ -9,7 +9,11 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({ dispatch }) {
+  async nuxtServerInit({ commit, dispatch }) {
     await dispatch('posts/articles')
+    const name = this.$cookies.get('name')
+    if (name) {
+      commit('posts/setCommentName', { name })
+    }
   }
 }

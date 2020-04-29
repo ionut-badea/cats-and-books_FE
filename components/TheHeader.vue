@@ -97,10 +97,6 @@ img.logo {
   width: 8rem;
   margin: 0px 1rem;
 }
-.link:hover {
-  color: #4f6043;
-  border-bottom: 2px solid #4f6043;
-}
 input.input {
   width: 15rem;
   margin: 0px 1rem;

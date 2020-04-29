@@ -26,6 +26,5 @@ li {
 }
 li:hover {
   font-size: 1.25rem;
-  color: #ffb893;
 }
 </style>

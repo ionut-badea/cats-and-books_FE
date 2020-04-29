@@ -57,10 +57,12 @@ export const mutations = {
     state.searchResults.edges.push(value)
   },
   cleanComment(state) {
-    for (const field of state.comment) {
-      console.log(field)
-      state.comment[field] = ''
-    }
+    state.comment.body = ''
+    state.comment.name = ''
+    state.comment.save = false
+  },
+  setCommentName(state, { name }) {
+    state.comment.name = name
   }
 }
 
@@ -125,7 +127,7 @@ export const actions = {
       }
     })
     const value = article.data.data.articles.edges[0].node
-    commit('saveData', { property: 'article', value: value })
+    commit('saveData', { property: 'article', value })
   },
 
   // Download comments by article
@@ -143,7 +145,7 @@ export const actions = {
       }
     })
     const value = comments.data.data.articles.edges[0].node.comments
-    commit('saveData', { property: 'comments', value: value })
+    commit('saveData', { property: 'comments', value })
   },
 
   // Add comment to api
@@ -164,14 +166,26 @@ export const actions = {
         `
       }
     })
-    setTimeout((_) => {
-      commit('cleanComment')
-    }, 500)
     const comment = {
       name: state.comment.name,
       body: state.comment.body
     }
     commit('pushComment', { value: comment })
+    const cookie = this.$cookies.get(name)
+    if (
+      (state.comment.save && !cookie) ||
+      (state.comment.save && state.comment.name !== cookie)
+    ) {
+      this.$cookies.set('name', comment.name, {
+        path: '/',
+        httpOnly: false,
+        maxAge: 60 * 60 * 24 * 365 * 10,
+        sameSite: 'Strict'
+      })
+    }
+    setTimeout((_) => {
+      commit('cleanComment')
+    }, 500)
   },
 
   // Clear fields after submision
@@ -231,7 +245,7 @@ export const actions = {
         `
       }
     })
-    console.log(articles)
+    console.log(article)
   }
 
   // Download Articles by Tags

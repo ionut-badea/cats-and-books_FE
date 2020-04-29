@@ -19,3 +19,17 @@ export const refresh = {
     }
   `
 }
+
+export const userInfo = {
+  query: `
+    query user($user:ID!){
+      user(id:$user){
+        username
+        firstName
+        lastName
+        bio
+        avatar
+      }
+    }
+  `
+}

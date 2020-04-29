@@ -60,15 +60,10 @@
               <p class="content">
                 <strong>{{ comment.name }}</strong>
               </p>
-              <p class="help">{{ comment.created }}</p>
+              <p class="help">
+                {{ $moment(comment.created).from() }}
+              </p>
               <p class="content">{{ comment.body }}</p>
-            </div>
-            <div class="field is-grouped">
-              <div class="control">
-                <button id="social" class="button is-primary is-small">
-                  Reply
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -170,6 +165,10 @@ import { mapFields } from 'vuex-map-fields'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 
 export default {
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
   async asyncData({ params, store }) {
     await store.dispatch('posts/article', {
       slug: params.slug
@@ -183,10 +182,6 @@ export default {
       addComment: false,
       displayComments: true
     }
-  },
-  components: {
-    ValidationProvider,
-    ValidationObserver
   },
   computed: {
     ...mapState('posts', {
@@ -202,7 +197,7 @@ export default {
   methods: {
     send() {
       const uid = this.$store.state.posts.article.uid
-      this.$store.dispatch('posts/sendComment', { uid: uid })
+      this.$store.dispatch('posts/sendComment', { uid })
     },
     ...mapActions('posts', ['cancel'])
   }

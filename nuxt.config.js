@@ -14,7 +14,13 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.png' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.png' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -23,7 +29,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/style.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    */
@@ -31,7 +37,10 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: ['@nuxtjs/moment'],
+  moment: {
+    timezone: true
+  },
   /*
    ** Nuxt.js modules
    */

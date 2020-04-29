@@ -1,5 +1,5 @@
 import { getField, updateField } from 'vuex-map-fields'
-import { auth, refresh } from '../queries/accounts.js'
+import { auth, refresh, userInfo } from '../queries/accounts.js'
 
 export const state = () => {
   return {
@@ -79,5 +79,20 @@ export const actions = {
     for (const field of fields) {
       commit('saveData', { property: field, value: '' })
     }
+  },
+  async user({ commit }) {
+    const user = await this.$axios({
+      url: 'api/',
+      method: 'POST',
+      data: {
+        query: userInfo.query,
+        variables: `
+          {
+            "user": ""
+          }
+        `
+      }
+    })
+    console.log(user)
   }
 }
