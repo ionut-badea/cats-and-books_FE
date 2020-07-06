@@ -1,12 +1,6 @@
 <template>
   <article class="box">
     <nuxt-link :to="slug">
-      <!-- <div v-if="image">
-        <figure class="image">
-          <img :src="image" :alt="title" />
-        </figure>
-        <br />
-      </div> -->
       <h1
         class="title is-size-5-mobile is-size-3-tablet is-size-2-widescreen has-text-centered"
       >
@@ -20,14 +14,14 @@
           class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
         >
           wrote by
-          <nuxt-link :to="author">
+          <nuxt-link :to="`archive/authors/${author}`">
             <strong>{{ author }}</strong>
           </nuxt-link>
         </h2>
       </div>
       <div class="column has-text-centered is-12-mobile is-6-tablet">
         <div v-for="tag in tags" :key="tag.id" class="tags">
-          <nuxt-link :to="tag.name">
+          <nuxt-link :to="`archive/tags/${tag.slug}`">
             <span class="tag is-size-7-mobile is-size-6-tablet">
               {{ tag.name }}
             </span>
@@ -36,8 +30,8 @@
         <h2
           class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
         >
-          published on
-          <strong>{{ published }}</strong>
+          published
+          <strong>{{ $moment(published).from() }}</strong>
         </h2>
       </div>
       <div class="column has-text-centered is-12-mobile is-3-tablet">
@@ -45,8 +39,8 @@
           class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
         >
           category
-          <nuxt-link :to="category">
-            <strong>{{ category }}</strong>
+          <nuxt-link :to="`archive/categories/${category.slug}`">
+            <strong>{{ category.name }}</strong>
           </nuxt-link>
         </h2>
       </div>
@@ -81,15 +75,15 @@ export default {
       required: true
     },
     category: {
-      type: String,
-      required: true
-    },
-    published: {
-      type: String,
+      type: Object,
       required: true
     },
     tags: {
       type: Array,
+      required: true
+    },
+    published: {
+      type: String,
       required: true
     }
   }

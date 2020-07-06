@@ -43,15 +43,22 @@
           </nuxt-link>
         </div>
         <div class="navbar-item">
-          <input
-            id="search"
-            v-model="keywords"
-            name="search"
-            type="search"
-            class="input is-link has-text-link"
-            placeholder="Search"
-            @keydown.enter="search"
-          />
+          <ValidationObserver v-slot="{ handleSubmit }">
+            <form method="POST">
+              <ValidationProvider v-slot="{ classes }" rules="no_quotes">
+                <input
+                  id="search"
+                  v-model="keywords"
+                  name="search"
+                  type="search"
+                  class="input is-link has-text-link"
+                  :class="classes"
+                  placeholder="Search"
+                  @keydown.enter.prevent="handleSubmit(search)"
+                />
+              </ValidationProvider>
+            </form>
+          </ValidationObserver>
         </div>
       </div>
     </div>
@@ -60,20 +67,24 @@
 
 <script>
 import { mapFields } from 'vuex-map-fields'
+import { ValidationProvider, ValidationObserver } from 'vee-validate'
 
 export default {
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
   data() {
     return {
       active: false
     }
   },
   computed: {
-    ...mapFields('posts', ['keywords'])
+    ...mapFields('searches', ['keywords'])
   },
   methods: {
     search() {
-      this.$store.dispatch('posts/search')
-      this.$store.commit('posts/saveData', { property: 'keywords', value: '' })
+      this.$store.dispatch('searches/downloadSearchResultsByTitle')
       this.$router.push('/search')
     }
   }
@@ -100,5 +111,10 @@ img.logo {
 input.input {
   width: 15rem;
   margin: 0px 1rem;
+}
+button#search {
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader></TheHeader>
-    <div class="section is-small">
+    <div id="default" class="section is-small">
       <nuxt />
     </div>
     <TheFooter></TheFooter>
@@ -23,6 +23,9 @@ export default {
 <style>
 a {
   outline: 0;
+}
+div#default {
+  min-height: calc(100vh - 346px - 83px);
 }
 body::-webkit-scrollbar {
   width: 0.5em;

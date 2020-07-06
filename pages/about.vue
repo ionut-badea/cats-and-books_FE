@@ -4,7 +4,7 @@
       <h1 class="title is-3 has-text-centered">About Us</h1>
       <div class="columns is-centered">
         <div class="column">
-          <nuxt-link to="">
+          <nuxt-link to="/archive/authors/jack">
             <figure class="image">
               <img src="~/assets/images/Jack.jpg" class="avatar is-rounded" />
             </figure>

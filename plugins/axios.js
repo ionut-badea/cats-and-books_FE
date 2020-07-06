@@ -4,12 +4,13 @@ export default async function({ $axios, app }) {
     config.xsrfHeaderName = 'X-CSRFToken'
     config.headers['Content-Type'] = 'application/json'
     const csrfCookie = app.$cookies.get('csrftoken')
-    const token = app.$cookies.get('token')
-    if (token) {
-      config.headers.Authorization = `JWT ${token}`
-    }
     if (csrfCookie) {
       config.headers['X-CSRFToken'] = csrfCookie
+      // if (process.server) {
+      // } else if (process.client) {
+      // }
+    } else {
+      alert('Something')
     }
   })
   await $axios.onResponse((res) => {
@@ -22,6 +23,7 @@ export default async function({ $axios, app }) {
         app.$cookies.set(cookieName, cookieValue, {
           path: '/',
           httpOnly: false,
+          secure: true,
           maxAge: 60 * 60 * 24 * 365,
           sameSite: 'Lax'
         })

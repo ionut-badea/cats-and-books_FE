@@ -18,20 +18,27 @@
             class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
           >
             wrote by
-            <strong>{{ article.author.username }}</strong>
+
+            <nuxt-link :to="`archive/authors/${article.author.username}`">
+              <strong>
+                {{ article.author.username }}
+              </strong>
+            </nuxt-link>
           </h2>
         </div>
         <div class="column has-text-centered is-12-mobile is-6-tablet">
           <div v-for="tag in article.tags" :key="tag.uid" class="tags">
-            <span class="tag is-size-7-mobile is-size-6-tablet">
-              {{ tag.name }}
-            </span>
+            <nuxt-link :to="`archive/tags/${tag.slug}`">
+              <span class="tag is-size-7-mobile is-size-6-tablet">
+                {{ tag.name }}
+              </span>
+            </nuxt-link>
           </div>
           <h2
             class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
           >
-            published on
-            <strong>{{ article.published }}</strong>
+            published
+            <strong>{{ $moment(article.published).from() }}</strong>
           </h2>
         </div>
         <div class="column has-text-centered is-12-mobile is-3-tablet">
@@ -39,7 +46,9 @@
             class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
           >
             category
-            <strong>{{ article.category.name }}</strong>
+            <nuxt-link :to="`archive/categories/${article.category.slug}`">
+              <strong>{{ article.category.name }}</strong>
+            </nuxt-link>
           </h2>
         </div>
       </div>
@@ -170,10 +179,10 @@ export default {
     ValidationObserver
   },
   async asyncData({ params, store }) {
-    await store.dispatch('posts/article', {
+    await store.dispatch('posts/articles/loadArticleBySlug', {
       slug: params.slug
     })
-    await store.dispatch('posts/comments', {
+    await store.dispatch('posts/comments/loadAllComments', {
       slug: params.slug
     })
   },
@@ -184,11 +193,13 @@ export default {
     }
   },
   computed: {
-    ...mapState('posts', {
-      article: (state) => state.article,
+    ...mapState('posts/articles', {
+      article: (state) => state.article
+    }),
+    ...mapState('posts/comments', {
       comments: (state) => state.comments
     }),
-    ...mapFields('posts', {
+    ...mapFields('posts/comments', {
       message: 'comment.body',
       name: 'comment.name',
       save: 'comment.save'
@@ -196,10 +207,10 @@ export default {
   },
   methods: {
     send() {
-      const uid = this.$store.state.posts.article.uid
-      this.$store.dispatch('posts/sendComment', { uid })
+      const uid = this.$store.state.posts.articles.article.uid
+      this.$store.dispatch('posts/comments/addComment', { uid })
     },
-    ...mapActions('posts', ['cancel'])
+    ...mapActions('posts/comments', ['cancel'])
   }
 }
 </script>

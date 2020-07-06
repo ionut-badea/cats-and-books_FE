@@ -1,8 +1,8 @@
 export default {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
+
+  target: 'server',
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -10,7 +10,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
-        name: 'description',
+        name: 'Cats and Books',
         content: process.env.npm_package_description || ''
       }
     ],
@@ -22,28 +22,19 @@ export default {
       }
     ]
   },
-  /*
-   ** Customize the progress-bar color
-   */
-  loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
+
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
+
   plugins: ['~/plugins/axios', '~/plugins/vee-validate'],
-  /*
-   ** Nuxt.js dev-modules
-   */
+
+  components: true,
+
   buildModules: ['@nuxtjs/moment'],
+
   moment: {
     timezone: true
   },
-  /*
-   ** Nuxt.js modules
-   */
+
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
@@ -67,14 +58,19 @@ export default {
   },
 
   middleware: [],
-  /*
-   ** Build configuration
-   */
+
+  server: {
+    host: '127.0.0.2',
+    port: 3000
+  },
+
   build: {
     transpile: ['vee-validate/dist/rules'],
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
+
+    extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    }
   }
 }

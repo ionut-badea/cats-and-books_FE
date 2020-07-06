@@ -9,9 +9,9 @@
             :title="article.node.title"
             :slug="article.node.slug"
             :abstract="article.node.abstract"
-            :published="article.node.published"
-            :category="article.node.category.name"
+            :category="article.node.category"
             :tags="article.node.tags"
+            :published="article.node.published"
           ></TheArticle>
         </div>
       </div>
@@ -28,7 +28,7 @@ export default {
     TheArticle
   },
   computed: {
-    ...mapState('posts', {
+    ...mapState('searches', {
       articles: (state) => state.searchResults.edges
     })
   }

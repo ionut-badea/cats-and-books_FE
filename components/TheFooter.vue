@@ -11,26 +11,13 @@
         <TheSubscriber></TheSubscriber>
       </div>
     </div>
-    <!-- <div class="columns">
-      <div class="column has-text-centered">
-        <a href class="has-text-grey-light">Thanks for open source</a>
-      </div>
-      <div class="column has-text-centered">
-        <a class="has-text-grey-light" href="http://yazee.me"
-          >Proudly made by Yazee Me</a
-        >
-      </div>
-      <div class="column has-text-centered">
-        <nuxt-link to="/sitemap.xml" class="has-text-grey-light">Site map</nuxt-link>
-      </div>
-    </div> -->
   </footer>
 </template>
 
 <script>
 import TheMenu from './TheMenu'
 import TheSocial from './TheSocial'
-import TheSubscriber from './TheSubscriber'
+import TheSubscriber from './TheSubscription'
 
 export default {
   components: {

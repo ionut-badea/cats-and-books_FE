@@ -10,7 +10,7 @@
             :slug="article.node.slug"
             :abstract="article.node.abstract"
             :published="article.node.published"
-            :category="article.node.category.name"
+            :category="article.node.category"
             :tags="article.node.tags"
           ></TheArticle>
         </div>
@@ -18,14 +18,14 @@
           <button
             v-if="hasNextPage && articles.length > 0"
             class="button is-primary"
-            @click="nextPage"
+            @click="loadNextPage"
           >
             Load more articles
           </button>
         </div>
         <div
           v-if="!hasNextPage && articles.length > 0"
-          class="has-text-centered subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop has-text-link"
+          class="has-text-centered subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop has-text-info"
         >
           <b>For now, these are all the articles on Cats and Books.</b>
           <br />
@@ -33,7 +33,7 @@
         </div>
         <div
           v-if="articles.length === 0"
-          class="has-text-centered subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop has-text-link"
+          class="has-text-centered subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop has-text-info"
         >
           Something went wrong.
         </div>
@@ -51,14 +51,14 @@ export default {
     TheArticle
   },
   computed: {
-    ...mapState('posts', {
+    ...mapState('posts/articles', {
       articles: (state) => state.articles.edges,
       total: (state) => state.articles.total,
       hasNextPage: (state) => state.articles.pageInfo.hasNextPage
     })
   },
   methods: {
-    ...mapActions('posts', ['nextPage'])
+    ...mapActions('posts/articles', ['loadNextPage'])
   }
 }
 </script>

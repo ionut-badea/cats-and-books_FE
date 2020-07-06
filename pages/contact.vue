@@ -127,12 +127,12 @@ export default {
     ValidationObserver
   },
   computed: {
-    ...mapFields('contact', ['name', 'email', 'body', 'terms'])
+    ...mapFields('contacts', ['name', 'email', 'body', 'terms'])
   },
   methods: {
-    ...mapActions('contact', ['cancel']),
+    ...mapActions('contacts', ['cancel']),
     send() {
-      this.$store.dispatch('contact/send')
+      this.$store.dispatch('contacts/addMessage')
     }
   }
 }

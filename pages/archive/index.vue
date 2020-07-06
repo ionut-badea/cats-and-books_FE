@@ -1,11 +1,31 @@
 <template>
-  <div>
-    <div class="container has-text-centered">
-      <h1 class="title is-size-5-mobile has-text-link">
-        The Archive section is under construction!
+  <div class="columns is-centered is-vcentered">
+    <div class="column is-12-mobile is-3-desktop has-text-centered">
+      <h1 class="title">
+        <nuxt-link to="/archive/authors/">
+          Authors
+        </nuxt-link>
       </h1>
-      <h1 class="title is-size-5-mobile has-text-link">
-        Thank you for patience!
+    </div>
+    <div class="column is-12-mobile is-3-desktop has-text-centered">
+      <h1 class="title">
+        <nuxt-link to="/archive/categories/">
+          Categories
+        </nuxt-link>
+      </h1>
+    </div>
+    <div class="column is-12-mobile is-3-desktop has-text-centered">
+      <h1 class="title">
+        <nuxt-link to="/archive/tags/">
+          Tags
+        </nuxt-link>
+      </h1>
+    </div>
+    <div class="column is-12-mobile is-3-desktop has-text-centered">
+      <h1 class="title">
+        <nuxt-link to="/archive/year/">
+          Published date
+        </nuxt-link>
       </h1>
     </div>
   </div>
@@ -16,8 +36,9 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState('posts', {
-      articles: (state) => state.articles
+    ...mapState('archive/dates', {
+      years: (state) => state.years,
+      months: (state) => state.months
     })
   }
 }
