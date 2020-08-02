@@ -30,26 +30,26 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     slug: {
       type: String,
-      required: true
+      required: true,
     },
     author: {
       type: String,
-      required: true
+      required: true,
     },
     category: {
       type: Object,
-      required: true
+      required: true,
     },
     published: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped></style>

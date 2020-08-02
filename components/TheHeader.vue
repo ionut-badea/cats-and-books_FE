@@ -6,18 +6,8 @@
           <img src="~assets/images/logo_RGB.png" alt="Home" class="logo" />
         </figure>
       </nuxt-link>
-      <div
-        class="navbar-burger"
-        :class="{ 'is-active': active }"
-        @click="active = !active"
-      >
-        <a
-          role="button"
-          class="burger"
-          aria-label="menu"
-          :aria-expanded="active"
-          data-target="navbar"
-        >
+      <div class="navbar-burger" :class="{ 'is-active': active }" @click="active = !active">
+        <a role="button" class="burger" aria-label="menu" :aria-expanded="active" data-target="navbar">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -66,29 +56,29 @@
 </template>
 
 <script>
-import { mapFields } from 'vuex-map-fields'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { mapFields } from 'vuex-map-fields';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   data() {
     return {
-      active: false
-    }
+      active: false,
+    };
   },
   computed: {
-    ...mapFields('searches', ['keywords'])
+    ...mapFields('searches', ['keywords']),
   },
   methods: {
     search() {
-      this.$store.dispatch('searches/downloadSearchResultsByTitle')
-      this.$router.push('/search')
-    }
-  }
-}
+      this.$store.dispatch('searches/downloadSearchResultsByTitle');
+      this.$router.push('/search');
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -5,10 +5,7 @@
       <form method="POST">
         <div class="field">
           <div class="control has-text-centered">
-            <ValidationProvider
-              v-slot="{ classes }"
-              rules="required|alpha_spaces|min:3"
-            >
+            <ValidationProvider v-slot="{ classes }" rules="required|min:3">
               <input
                 id="subscriber_name"
                 v-model="name"
@@ -40,21 +37,12 @@
         </div>
         <div class="field">
           <div class="control has-text-centered">
-            <input
-              id="subscriber_terms"
-              v-model="terms"
-              name="terms and conditions checkbox"
-              type="checkbox"
-            />
+            <input id="subscriber_terms" v-model="terms" name="terms and conditions checkbox" type="checkbox" />
             I agree to the
             <router-link to="/terms">terms and conditions</router-link>
           </div>
         </div>
-        <button
-          type="submit"
-          class="button is-primary"
-          @click.prevent="handleSubmit(addSubscriber)"
-        >
+        <button type="submit" class="button is-primary" @click.prevent="handleSubmit(addSubscriber)">
           Subscribe
         </button>
       </form>
@@ -63,23 +51,23 @@
 </template>
 
 <script>
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
-import { mapActions } from 'vuex'
-import { mapFields } from 'vuex-map-fields'
+import { mapActions } from 'vuex';
+import { mapFields } from 'vuex-map-fields';
 
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   computed: {
-    ...mapFields('subscriptions', ['name', 'email', 'terms', 'status'])
+    ...mapFields('subscriptions', ['name', 'email', 'terms', 'status']),
   },
   methods: {
-    ...mapActions('subscriptions', ['addSubscriber'])
-  }
-}
+    ...mapActions('subscriptions', ['addSubscriber']),
+  },
+};
 </script>
 
 <style scoped>

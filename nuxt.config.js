@@ -1,7 +1,7 @@
 export default {
   mode: 'universal',
 
-  target: 'server',
+  target: 'static',
 
   head: {
     title: process.env.npm_package_name || '',
@@ -11,16 +11,16 @@ export default {
       {
         hid: 'description',
         name: 'Cats and Books',
-        content: process.env.npm_package_description || ''
-      }
+        content: process.env.npm_package_description || '',
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'favicon.png' },
       {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css'
-      }
-    ]
+        href: 'https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css',
+      },
+    ],
   },
 
   css: [],
@@ -29,39 +29,31 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/moment'],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/moment'],
 
   moment: {
-    timezone: true
+    timezone: true,
   },
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    ['cookie-universal-nuxt', { parseJSON: false }],
-    '@nuxtjs/sitemap'
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/proxy', ['cookie-universal-nuxt', { parseJSON: false }]],
+
   axios: {
     baseURL: 'http://127.0.0.1:8000/',
     debug: false,
     progress: true,
     credentials: true,
-    proxy: false
+    proxy: true,
   },
 
-  sitemap: {
-    // hostname: ''
-    changefreq: 'daily',
-    exclude: ['/admin', '/admin/*']
-    // gzip: true
-    // routes: []
+  proxy: {
+    '/api/': 'http://127.0.0.1:8000/',
   },
 
   middleware: [],
 
   server: {
     host: '127.0.0.2',
-    port: 3000
+    port: 3000,
   },
 
   build: {
@@ -69,8 +61,8 @@ export default {
 
     extend(config, ctx) {
       if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map';
       }
-    }
-  }
-}
+    },
+  },
+};

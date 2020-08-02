@@ -20,19 +20,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import TheArticle from '../components/TheArticle'
+import { mapState } from 'vuex';
+import TheArticle from '../components/TheArticle';
 
 export default {
   components: {
-    TheArticle
+    TheArticle,
   },
   computed: {
     ...mapState('searches', {
-      articles: (state) => state.searchResults.edges
-    })
-  }
-}
+      articles: (state) => state.searchResults.edges,
+    }),
+  },
+};
 </script>
 
 <style scoped></style>

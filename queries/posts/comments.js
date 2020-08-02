@@ -14,8 +14,8 @@ export const downloadAllComments = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const AddComment = {
   mutation: `
@@ -27,5 +27,5 @@ export const AddComment = {
         }
       }
     }
-  `
-}
+  `,
+};

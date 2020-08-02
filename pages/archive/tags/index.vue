@@ -12,15 +12,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
 export default {
   computed: {
     ...mapState('archives/tags', {
-      tags: (state) => state.tags.edges
-    })
-  }
-}
+      tags: (state) => state.tags.edges,
+    }),
+  },
+};
 </script>
 
 <style scoped></style>

@@ -28,8 +28,8 @@ export const downloadTagArticlesBySlug = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const downloadAllTags = {
   query: `
@@ -44,5 +44,5 @@ export const downloadAllTags = {
         }
       }
     }
-  `
-}
+  `,
+};

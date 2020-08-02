@@ -1,18 +1,14 @@
 <template>
   <article class="box">
     <nuxt-link :to="slug">
-      <h1
-        class="title is-size-5-mobile is-size-3-tablet is-size-2-widescreen has-text-centered"
-      >
+      <h1 class="title is-size-5-mobile is-size-3-tablet is-size-2-widescreen has-text-centered">
         {{ title }}
       </h1>
     </nuxt-link>
     <br />
     <div class="columns is-centered">
       <div class="column has-text-centered is-12-mobile is-3-tablet">
-        <h2
-          class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-        >
+        <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
           wrote by
           <nuxt-link :to="`archive/authors/${author}`">
             <strong>{{ author }}</strong>
@@ -27,17 +23,13 @@
             </span>
           </nuxt-link>
         </div>
-        <h2
-          class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-        >
+        <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
           published
           <strong>{{ $moment(published).from() }}</strong>
         </h2>
       </div>
       <div class="column has-text-centered is-12-mobile is-3-tablet">
-        <h2
-          class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-        >
+        <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
           category
           <nuxt-link :to="`archive/categories/${category.slug}`">
             <strong>{{ category.name }}</strong>
@@ -56,15 +48,15 @@ export default {
   props: {
     author: {
       type: String,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      required: true
+      required: true,
     },
     slug: {
       type: String,
-      required: true
+      required: true,
     },
     // image: {
     //   type: String,
@@ -72,22 +64,22 @@ export default {
     // },
     abstract: {
       type: String,
-      required: true
+      required: true,
     },
     category: {
       type: Object,
-      required: true
+      required: true,
     },
     tags: {
       type: Array,
-      required: true
+      required: true,
     },
     published: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -1,26 +1,26 @@
-import { getField, updateField } from 'vuex-map-fields'
-import { downloadSearchResultsByTitle } from '../../queries/searches'
+import { getField, updateField } from 'vuex-map-fields';
+import { downloadSearchResultsByTitle } from '../../queries/searches';
 
 export const state = () => {
   return {
     keywords: '',
-    searchResults: {}
-  }
-}
+    searchResults: {},
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   pushSearchArticle(state, { value }) {
-    state.searchResults.edges.push(value)
+    state.searchResults.edges.push(value);
   },
   saveData(state, { property, value }) {
-    state[property] = value
-  }
-}
+    state[property] = value;
+  },
+};
 
 export const actions = {
   async downloadSearchResultsByTitle({ state, commit }) {
@@ -33,10 +33,10 @@ export const actions = {
           {
             "title": "${state.keywords}"
           }
-        `
-      }
-    })
-    const results = articles.data.data.articles
-    commit('saveData', { property: 'searchResults', value: results })
-  }
-}
+        `,
+      },
+    });
+    const results = articles.data.data.articles;
+    commit('saveData', { property: 'searchResults', value: results });
+  },
+};

@@ -30,8 +30,8 @@ export const downloadAuthorArticlesByUsername = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const downloadAllAuthors = {
   query: `
@@ -47,5 +47,5 @@ export const downloadAllAuthors = {
         }
       }
     }
-  `
-}
+  `,
+};

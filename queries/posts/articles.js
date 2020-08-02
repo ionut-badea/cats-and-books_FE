@@ -27,8 +27,8 @@ export const downloadArticleBySlug = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const downloadAllArticles = {
   query: `
@@ -64,5 +64,5 @@ export const downloadAllArticles = {
         }
       }
     }
-  `
-}
+  `,
+};

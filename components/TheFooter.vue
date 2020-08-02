@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import TheMenu from './TheMenu'
-import TheSocial from './TheSocial'
-import TheSubscriber from './TheSubscription'
+import TheMenu from './TheMenu';
+import TheSocial from './TheSocial';
+import TheSubscriber from './TheSubscription';
 
 export default {
   components: {
     TheMenu,
     TheSocial,
-    TheSubscriber
-  }
-}
+    TheSubscriber,
+  },
+};
 </script>
 
 <style scoped>

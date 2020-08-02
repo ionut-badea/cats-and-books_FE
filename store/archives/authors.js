@@ -1,29 +1,26 @@
-import { getField, updateField } from 'vuex-map-fields'
-import {
-  downloadAuthorArticlesByUsername,
-  downloadAllAuthors
-} from '../../queries/archives/authors'
+import { getField, updateField } from 'vuex-map-fields';
+import { downloadAuthorArticlesByUsername, downloadAllAuthors } from '../../queries/archives/authors';
 
 export const state = () => {
   return {
     authors: {},
-    articlesByAuthor: {}
-  }
-}
+    articlesByAuthor: {},
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   pushCategory(state, { value }) {
-    state.authors.push(value)
+    state.authors.push(value);
   },
   saveData(state, { property, value }) {
-    state[property] = value
-  }
-}
+    state[property] = value;
+  },
+};
 
 export const actions = {
   // Download Articles by Categories
@@ -37,14 +34,14 @@ export const actions = {
           {
             "username": "${username}"
           }
-        `
-      }
-    })
-    const articles = allArticles.data.data.users.edges[0].node
+        `,
+      },
+    });
+    const articles = allArticles.data.data.users.edges[0].node;
     commit('saveData', {
       property: 'articlesByAuthor',
-      value: articles
-    })
+      value: articles,
+    });
   },
   // Download all Articles
   async loadAllAuthors({ commit }) {
@@ -52,10 +49,10 @@ export const actions = {
       url: 'api/',
       method: 'GET',
       data: {
-        query: downloadAllAuthors.query
-      }
-    })
-    const authors = allAuthors.data.data
-    commit('saveData', { property: 'authors', value: authors })
-  }
-}
+        query: downloadAllAuthors.query,
+      },
+    });
+    const authors = allAuthors.data.data;
+    commit('saveData', { property: 'authors', value: authors });
+  },
+};

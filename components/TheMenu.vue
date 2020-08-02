@@ -5,19 +5,15 @@
       <ul>
         <nuxt-link tag="li" to="/" class="has-text-link">Home</nuxt-link>
         <nuxt-link tag="li" to="/about" class="has-text-link">About</nuxt-link>
-        <nuxt-link tag="li" to="/contact" class="has-text-link"
-          >Contact</nuxt-link
-        >
-        <nuxt-link tag="li" to="/archive" class="has-text-link"
-          >Archive</nuxt-link
-        >
+        <nuxt-link tag="li" to="/contact" class="has-text-link">Contact</nuxt-link>
+        <nuxt-link tag="li" to="/archive" class="has-text-link">Archive</nuxt-link>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

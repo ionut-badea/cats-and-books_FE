@@ -35,25 +35,25 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import TheCategory from '../../../../components/TheCategory'
+import { mapState } from 'vuex';
+import TheCategory from '../../../../components/TheCategory';
 
 export default {
   components: {
-    TheCategory
+    TheCategory,
   },
   async asyncData({ params, store }) {
     await store.dispatch('archives/categories/loadCategoryArticlesBySlug', {
-      slug: params.slug
-    })
+      slug: params.slug,
+    });
   },
   computed: {
     ...mapState('archives/categories', {
       category: (state) => state.articlesByCategory.name,
-      articles: (state) => state.articlesByCategory.articles
-    })
-  }
-}
+      articles: (state) => state.articlesByCategory.articles,
+    }),
+  },
+};
 </script>
 
 <style scoped></style>

@@ -8,19 +8,15 @@
             <figure class="image">
               <img src="~/assets/images/Jack.jpg" class="avatar is-rounded" />
             </figure>
-            <p
-              class="title is-size-6-mobile is-size-4-tablet is-size-3-widescreen has-text-centered"
-            >
+            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-widescreen has-text-centered">
               Jack
             </p>
           </nuxt-link>
           <div class="has-text-justified">
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus, dicta rerum reiciendis magnam aliquam sapiente?
-              Voluptates blanditiis tempora deserunt molestiae reiciendis
-              voluptas soluta error, aliquid ipsa repellat quo debitis
-              dignissimos.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dicta rerum reiciendis magnam
+              aliquam sapiente? Voluptates blanditiis tempora deserunt molestiae reiciendis voluptas soluta error,
+              aliquid ipsa repellat quo debitis dignissimos.
             </p>
           </div>
         </div>
@@ -31,7 +27,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

@@ -1,25 +1,25 @@
-import { getField, updateField } from 'vuex-map-fields'
-import { AddMessage } from '../../queries/contacts'
+import { getField, updateField } from 'vuex-map-fields';
+import { AddMessage } from '../../queries/contacts';
 
 export const state = () => {
   return {
     name: '',
     email: '',
     body: '',
-    terms: false
-  }
-}
+    terms: false,
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   saveData(state, { property, data }) {
-    state[property] = data
-  }
-}
+    state[property] = data;
+  },
+};
 
 export const actions = {
   async addMessage({ state, dispatch }) {
@@ -38,24 +38,24 @@ export const actions = {
                 "terms": ${state.terms}
               }
             }
-          `
-        }
-      })
-      this.$router.push({ path: 'thanks/' })
+          `,
+        },
+      });
+      this.$router.push({ path: 'thanks/' });
       setTimeout((_) => {
-        this.$router.push({ path: '/' })
-      }, 5000)
+        this.$router.push({ path: '/' });
+      }, 5000);
       setTimeout((_) => {
-        dispatch('cancel')
-      }, 500)
+        dispatch('cancel');
+      }, 500);
     } else {
-      alert('You must agree terms and conditions!')
+      // window.alert('You must agree terms and conditions!')
     }
   },
   cancel({ commit }) {
-    const fields = ['name', 'email', 'body', 'terms']
+    const fields = ['name', 'email', 'body', 'terms'];
     for (const field of fields) {
-      commit('saveData', { property: field, data: '' })
+      commit('saveData', { property: field, data: '' });
     }
-  }
-}
+  },
+};

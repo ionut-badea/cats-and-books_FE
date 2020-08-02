@@ -15,11 +15,7 @@
           ></TheArticle>
         </div>
         <div class="has-text-centered">
-          <button
-            v-if="hasNextPage && articles.length > 0"
-            class="button is-primary"
-            @click="loadNextPage"
-          >
+          <button v-if="hasNextPage && articles.length > 0" class="button is-primary" @click="loadNextPage">
             Load more articles
           </button>
         </div>
@@ -43,24 +39,24 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import TheArticle from '../components/TheArticle'
+import { mapState, mapActions } from 'vuex';
+import TheArticle from '../components/TheArticle';
 
 export default {
   components: {
-    TheArticle
+    TheArticle,
   },
   computed: {
     ...mapState('posts/articles', {
       articles: (state) => state.articles.edges,
       total: (state) => state.articles.total,
-      hasNextPage: (state) => state.articles.pageInfo.hasNextPage
-    })
+      hasNextPage: (state) => state.articles.pageInfo.hasNextPage,
+    }),
   },
   methods: {
-    ...mapActions('posts/articles', ['loadNextPage'])
-  }
-}
+    ...mapActions('posts/articles', ['loadNextPage']),
+  },
+};
 </script>
 
 <style scoped></style>

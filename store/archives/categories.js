@@ -1,29 +1,26 @@
-import { getField, updateField } from 'vuex-map-fields'
-import {
-  downloadCategoryArticlesBySlug,
-  downloadAllCategories
-} from '../../queries/archives/categories'
+import { getField, updateField } from 'vuex-map-fields';
+import { downloadCategoryArticlesBySlug, downloadAllCategories } from '../../queries/archives/categories';
 
 export const state = () => {
   return {
     categories: {},
-    articlesByCategory: {}
-  }
-}
+    articlesByCategory: {},
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   pushCategory(state, { value }) {
-    state.categories.push(value)
+    state.categories.push(value);
   },
   saveData(state, { property, value }) {
-    state[property] = value
-  }
-}
+    state[property] = value;
+  },
+};
 
 export const actions = {
   // Download Articles by Categories
@@ -37,14 +34,14 @@ export const actions = {
           {
             "slug": "${slug}"
           }
-        `
-      }
-    })
-    const articles = allArticles.data.data.categories.edges[0].node
+        `,
+      },
+    });
+    const articles = allArticles.data.data.categories.edges[0].node;
     commit('saveData', {
       property: 'articlesByCategory',
-      value: articles
-    })
+      value: articles,
+    });
   },
   // Download all Articles
   async loadAllCategories({ commit }) {
@@ -52,10 +49,10 @@ export const actions = {
       url: 'api/',
       method: 'GET',
       data: {
-        query: downloadAllCategories.query
-      }
-    })
-    const categories = allCategories.data.data.categories
-    commit('saveData', { property: 'categories', value: categories })
-  }
-}
+        query: downloadAllCategories.query,
+      },
+    });
+    const categories = allCategories.data.data.categories;
+    commit('saveData', { property: 'categories', value: categories });
+  },
+};

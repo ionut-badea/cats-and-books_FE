@@ -4,26 +4,17 @@
     <ul>
       <li>
         <a href="http://twitter.com" target="_blank">
-          <img
-            src="https://img.icons8.com/cute-clipart/512/000000/twitter.png"
-            class="social"
-          />
+          <img src="https://img.icons8.com/cute-clipart/512/000000/twitter.png" class="social" />
         </a>
       </li>
       <li>
         <a href="http://instagram.com" target="_blank">
-          <img
-            src="https://img.icons8.com/cute-clipart/512/000000/instagram-new.png"
-            class="social"
-          />
+          <img src="https://img.icons8.com/cute-clipart/512/000000/instagram-new.png" class="social" />
         </a>
       </li>
       <li>
         <a href="http://facebook.com" target="_blank">
-          <img
-            src="https://img.icons8.com/cute-clipart/512/000000/facebook-new.png"
-            class="social"
-          />
+          <img src="https://img.icons8.com/cute-clipart/512/000000/facebook-new.png" class="social" />
         </a>
       </li>
     </ul>
@@ -31,7 +22,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

@@ -35,25 +35,25 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import TheAuthor from '../../../../components/TheAuthor'
+import { mapState } from 'vuex';
+import TheAuthor from '../../../../components/TheAuthor';
 
 export default {
   components: {
-    TheAuthor
+    TheAuthor,
   },
   async asyncData({ params, store }) {
     await store.dispatch('archives/authors/loadAuthorArticlesByUsername', {
-      username: params.username
-    })
+      username: params.username,
+    });
   },
   computed: {
     ...mapState('archives/authors', {
       author: (state) => state.articlesByAuthor.username,
-      articles: (state) => state.articlesByAuthor.articles.edges
-    })
-  }
-}
+      articles: (state) => state.articlesByAuthor.articles.edges,
+    }),
+  },
+};
 </script>
 
 <style scoped></style>

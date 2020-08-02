@@ -1,29 +1,26 @@
-import { getField, updateField } from 'vuex-map-fields'
-import {
-  downloadTagArticlesBySlug,
-  downloadAllTags
-} from '../../queries/archives/tags'
+import { getField, updateField } from 'vuex-map-fields';
+import { downloadTagArticlesBySlug, downloadAllTags } from '../../queries/archives/tags';
 
 export const state = () => {
   return {
     tags: {},
-    articlesByTag: {}
-  }
-}
+    articlesByTag: {},
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   pushTag(state, { value }) {
-    state.tags.push(value)
+    state.tags.push(value);
   },
   saveData(state, { property, value }) {
-    state[property] = value
-  }
-}
+    state[property] = value;
+  },
+};
 
 export const actions = {
   // Download Articles by Tags
@@ -37,24 +34,24 @@ export const actions = {
           {
             "slug": "${slug}"
           }
-        `
-      }
-    })
-    const articles = allArticles.data.data.tags.edges[0].node
+        `,
+      },
+    });
+    const articles = allArticles.data.data.tags.edges[0].node;
     commit('saveData', {
       property: 'articlesByTag',
-      value: articles
-    })
+      value: articles,
+    });
   },
   async loadAllTags({ commit }) {
     const allTags = await this.$axios({
       url: 'api/',
       method: 'GET',
       data: {
-        query: downloadAllTags.query
-      }
-    })
-    const tags = allTags.data.data.tags
-    commit('saveData', { property: 'tags', value: tags })
-  }
-}
+        query: downloadAllTags.query,
+      },
+    });
+    const tags = allTags.data.data.tags;
+    commit('saveData', { property: 'tags', value: tags });
+  },
+};

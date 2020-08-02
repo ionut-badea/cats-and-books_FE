@@ -30,17 +30,17 @@ export const downloadSearchResultsByTitle = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const downloadSearchByBody = {
   query: `
 
-  `
-}
+  `,
+};
 
 export const downloadearchByAbstract = {
   query: `
 
-  `
-}
+  `,
+};

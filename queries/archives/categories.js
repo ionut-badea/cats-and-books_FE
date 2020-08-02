@@ -25,8 +25,8 @@ export const downloadCategoryArticlesBySlug = {
         }
       }
     }
-  `
-}
+  `,
+};
 
 export const downloadAllCategories = {
   query: `
@@ -41,5 +41,5 @@ export const downloadAllCategories = {
         }
       }
     }
-  `
-}
+  `,
+};

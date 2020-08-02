@@ -35,25 +35,25 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import TheTag from '../../../../components/TheTag'
+import { mapState } from 'vuex';
+import TheTag from '../../../../components/TheTag';
 
 export default {
   components: {
-    TheTag
+    TheTag,
   },
   async asyncData({ params, store }) {
     await store.dispatch('archives/tags/loadTagArticlesBySlug', {
-      slug: params.slug
-    })
+      slug: params.slug,
+    });
   },
   computed: {
     ...mapState('archives/tags', {
       tag: (state) => state.articlesByTag.name,
-      articles: (state) => state.articlesByTag.articles.edges
-    })
-  }
-}
+      articles: (state) => state.articlesByTag.articles.edges,
+    }),
+  },
+};
 </script>
 
 <style scoped></style>

@@ -7,16 +7,12 @@
         </figure>
         <br />
       </div>-->
-      <h1
-        class="title is-size-5-mobile is-size-3-tablet is-size-2-widescreen has-text-centered"
-      >
+      <h1 class="title is-size-5-mobile is-size-3-tablet is-size-2-widescreen has-text-centered">
         {{ article.title }}
       </h1>
       <div class="columns is-centered">
         <div class="column has-text-centered is-12-mobile is-3-tablet">
-          <h2
-            class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-          >
+          <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
             wrote by
 
             <nuxt-link :to="`archive/authors/${article.author.username}`">
@@ -34,17 +30,13 @@
               </span>
             </nuxt-link>
           </div>
-          <h2
-            class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-          >
+          <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
             published
             <strong>{{ $moment(article.published).from() }}</strong>
           </h2>
         </div>
         <div class="column has-text-centered is-12-mobile is-3-tablet">
-          <h2
-            class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop"
-          >
+          <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
             category
             <nuxt-link :to="`archive/categories/${article.category.slug}`">
               <strong>{{ article.category.name }}</strong>
@@ -60,11 +52,7 @@
       </div>
       <div v-if="comments.length !== 0" class="columns">
         <div class="container">
-          <div
-            v-for="comment in comments"
-            :key="comment.id"
-            class="media column is-10-tablet is-offset-1"
-          >
+          <div v-for="comment in comments" :key="comment.id" class="media column is-10-tablet is-offset-1">
             <div class="media-content">
               <p class="content">
                 <strong>{{ comment.name }}</strong>
@@ -80,18 +68,13 @@
       <ValidationObserver v-slot="{ handleSubmit }">
         <form method="POST">
           <div class="columns is-centered">
-            <div
-              class="column has-text-centered is-12-mobile is-8-tablet is-6-desktop"
-            >
+            <div class="column has-text-centered is-12-mobile is-8-tablet is-6-desktop">
               <h2 class="subtitle is-size-5-mobile is-size-4-tablet">
                 Leave us a message
               </h2>
               <div class="field">
                 <div class="control">
-                  <ValidationProvider
-                    v-slot="{ errors, classes }"
-                    rules="required|no_quotes"
-                  >
+                  <ValidationProvider v-slot="{ errors, classes }" rules="required|no_quotes">
                     <textarea
                       id="comment_message"
                       v-model="message"
@@ -108,10 +91,7 @@
               </div>
               <div class="field">
                 <div class="control">
-                  <ValidationProvider
-                    v-slot="{ errors, classes }"
-                    rules="required|alpha_spaces"
-                  >
+                  <ValidationProvider v-slot="{ errors, classes }" rules="required|alpha_spaces">
                     <input
                       id="comment_name"
                       v-model="name"
@@ -128,13 +108,7 @@
               </div>
               <div class="field">
                 <div class="control">
-                  <input
-                    id="checkbox"
-                    v-model="save"
-                    name="save"
-                    type="checkbox"
-                    class="checkbox has-text-left"
-                  />
+                  <input id="checkbox" v-model="save" name="save" type="checkbox" class="checkbox has-text-left" />
                   <label for="checkbox">
                     Save my name in this browser for the next time I comment.
                   </label>
@@ -142,20 +116,12 @@
               </div>
               <div class="field is-grouped">
                 <div class="control">
-                  <button
-                    type="submit"
-                    class="button is-primary"
-                    @click.prevent="handleSubmit(send)"
-                  >
+                  <button type="submit" class="button is-primary" @click.prevent="handleSubmit(send)">
                     Send
                   </button>
                 </div>
                 <div class="control">
-                  <button
-                    type="reset"
-                    class="button is-danger"
-                    @click.prevent="cancel"
-                  >
+                  <button type="reset" class="button is-danger" @click.prevent="cancel">
                     Cancel
                   </button>
                 </div>
@@ -169,50 +135,50 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { mapFields } from 'vuex-map-fields'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { mapState, mapActions } from 'vuex';
+import { mapFields } from 'vuex-map-fields';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   components: {
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   async asyncData({ params, store }) {
     await store.dispatch('posts/articles/loadArticleBySlug', {
-      slug: params.slug
-    })
+      slug: params.slug,
+    });
     await store.dispatch('posts/comments/loadAllComments', {
-      slug: params.slug
-    })
+      slug: params.slug,
+    });
   },
   data() {
     return {
       addComment: false,
-      displayComments: true
-    }
+      displayComments: true,
+    };
   },
   computed: {
     ...mapState('posts/articles', {
-      article: (state) => state.article
+      article: (state) => state.article,
     }),
     ...mapState('posts/comments', {
-      comments: (state) => state.comments
+      comments: (state) => state.comments,
     }),
     ...mapFields('posts/comments', {
       message: 'comment.body',
       name: 'comment.name',
-      save: 'comment.save'
-    })
+      save: 'comment.save',
+    }),
   },
   methods: {
     send() {
-      const uid = this.$store.state.posts.articles.article.uid
-      this.$store.dispatch('posts/comments/addComment', { uid })
+      const uid = this.$store.state.posts.articles.article.uid;
+      this.$store.dispatch('posts/comments/addComment', { uid });
     },
-    ...mapActions('posts/comments', ['cancel'])
-  }
-}
+    ...mapActions('posts/comments', ['cancel']),
+  },
+};
 </script>
 
 <style scoped>

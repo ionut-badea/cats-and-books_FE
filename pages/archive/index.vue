@@ -32,16 +32,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
 export default {
   computed: {
     ...mapState('archive/dates', {
       years: (state) => state.years,
-      months: (state) => state.months
-    })
-  }
-}
+      months: (state) => state.months,
+    }),
+  },
+};
 </script>
 
 <style></style>

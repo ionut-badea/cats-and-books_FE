@@ -1,24 +1,24 @@
-import { getField, updateField } from 'vuex-map-fields'
-import { AddSubscriber } from '../../queries/subscriptions'
+import { getField, updateField } from 'vuex-map-fields';
+import { AddSubscriber } from '../../queries/subscriptions';
 
 export const state = () => {
   return {
     name: '',
     email: '',
-    terms: false
-  }
-}
+    terms: false,
+  };
+};
 
 export const getters = {
-  getField
-}
+  getField,
+};
 
 export const mutations = {
   updateField,
   saveData(state, { property, data }) {
-    state[property] = data
-  }
-}
+    state[property] = data;
+  },
+};
 
 export const actions = {
   async addSubscriber({ state, dispatch }) {
@@ -37,18 +37,18 @@ export const actions = {
                 "status": ${true}
               }
             }
-          `
-        }
-      })
-      dispatch('cancel')
+          `,
+        },
+      });
+      dispatch('cancel');
     } else {
-      alert('You must agree terms and conditions!') // change into a notification
+      // window.alert('You must agree terms and conditions!'); // change into a notification
     }
   },
   cancel({ commit }) {
-    const fields = ['name', 'email', 'terms']
+    const fields = ['name', 'email', 'terms'];
     for (const field of fields) {
-      commit('saveData', { property: field, data: '' })
+      commit('saveData', { property: field, data: '' });
     }
-  }
-}
+  },
+};
