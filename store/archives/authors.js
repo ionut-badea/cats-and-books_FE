@@ -47,7 +47,7 @@ export const actions = {
   async loadAllAuthors({ commit }) {
     const allAuthors = await this.$axios({
       url: 'api/',
-      method: 'GET',
+      method: 'POST',
       data: {
         query: downloadAllAuthors.query,
       },

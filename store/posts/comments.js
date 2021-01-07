@@ -89,9 +89,6 @@ export const actions = {
   },
 
   cancel({ commit }) {
-    const fields = ['body', 'name', 'save'];
-    for (const field of fields) {
-      commit('saveData', { property: field, data: '' });
-    }
+    commit('cleanComment');
   },
 };

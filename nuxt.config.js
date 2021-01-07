@@ -1,6 +1,4 @@
 export default {
-  mode: 'universal',
-
   target: 'static',
 
   head: {
@@ -35,26 +33,21 @@ export default {
     timezone: true,
   },
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/proxy', ['cookie-universal-nuxt', { parseJSON: false }]],
+  modules: ['@nuxtjs/axios', ['cookie-universal-nuxt', { parseJSON: false }]],
 
   axios: {
-    baseURL: 'http://127.0.0.1:8000/',
+    baseURL: 'https://cats-and-books.herokuapp.com/',
     debug: false,
     progress: true,
     credentials: true,
-    proxy: true,
-  },
-
-  proxy: {
-    '/api/': 'http://127.0.0.1:8000/',
   },
 
   middleware: [],
 
-  server: {
-    host: '127.0.0.2',
-    port: 3000,
-  },
+  // server: {
+  //   host: '127.0.0.2',
+  //   port: 3000,
+  // },
 
   build: {
     transpile: ['vee-validate/dist/rules'],

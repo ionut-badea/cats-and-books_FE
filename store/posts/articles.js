@@ -38,7 +38,6 @@ export const actions = {
     const article = await this.$axios({
       url: 'api/',
       method: 'POST',
-      withCredentials: true,
       data: {
         query: downloadArticleBySlug.query,
         variables: `
@@ -55,7 +54,7 @@ export const actions = {
   async loadAllArticles({ state, commit }) {
     const articles = await this.$axios({
       url: 'api/',
-      method: 'GET',
+      method: 'POST',
       data: {
         query: downloadAllArticles.query,
         variables: `

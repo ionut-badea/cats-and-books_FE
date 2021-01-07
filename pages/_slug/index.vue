@@ -91,7 +91,7 @@
               </div>
               <div class="field">
                 <div class="control">
-                  <ValidationProvider v-slot="{ errors, classes }" rules="required|alpha_spaces">
+                  <ValidationProvider v-slot="{ errors, classes }" rules="required">
                     <input
                       id="comment_name"
                       v-model="name"

@@ -35,17 +35,17 @@ export const downloadAuthorArticlesByUsername = {
 
 export const downloadAllAuthors = {
   query: `
-    query AllAuthors {
-      users {
-        edges{
-          node{
-            id
-            username
-            firstName
-            lastName
-          }
+  query AllAuthors {
+    users{
+      edges {
+        node {
+          id
+          username
+          firstName
+          lastName
         }
       }
     }
+  }
   `,
 };

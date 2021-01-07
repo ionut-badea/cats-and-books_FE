@@ -46,7 +46,7 @@ export const actions = {
   async loadAllTags({ commit }) {
     const allTags = await this.$axios({
       url: 'api/',
-      method: 'GET',
+      method: 'POST',
       data: {
         query: downloadAllTags.query,
       },

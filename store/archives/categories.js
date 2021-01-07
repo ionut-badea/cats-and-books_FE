@@ -47,7 +47,7 @@ export const actions = {
   async loadAllCategories({ commit }) {
     const allCategories = await this.$axios({
       url: 'api/',
-      method: 'GET',
+      method: 'POST',
       data: {
         query: downloadAllCategories.query,
       },
