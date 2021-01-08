@@ -42,9 +42,7 @@
             <router-link to="/terms">terms and conditions</router-link>
           </div>
         </div>
-        <button type="submit" class="button is-primary" @click.prevent="handleSubmit(addSubscriber)">
-          Subscribe
-        </button>
+        <button type="submit" class="button is-primary" @click.prevent="handleSubmit(addSubscriber)">Subscribe</button>
       </form>
     </ValidationObserver>
   </div>

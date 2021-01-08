@@ -10,6 +10,7 @@ export const actions = {
     await dispatch('archives/authors/loadAllAuthors');
     await dispatch('archives/categories/loadAllCategories');
     await dispatch('archives/tags/loadAllTags');
+    await dispatch('archives/dates/loadAllYears');
     const name = this.$cookies.get('name');
     if (name) {
       commit('posts/comments/setCommentName', { name });

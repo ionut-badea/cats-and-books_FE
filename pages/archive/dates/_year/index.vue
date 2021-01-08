@@ -1,26 +1,24 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title has-text-centered has-text-primary">
-        {{ author }}
-      </h1>
+      <h1 class="title has-text-centered has-text-primary">{{ year }}</h1>
       <div class="box has-background-primary">
         <div class="columns is-centered">
           <div class="column has-text-left is-12-mobile is-3-tablet">Title</div>
           <div class="column has-text-centered is-12-mobile is-3-tablet">Category</div>
           <div class="column has-text-centered is-12-mobile is-3-tablet">Tags</div>
-          <div class="column has-text-centered is-12-mobile is-3-tablet">Published</div>
+          <div class="column has-text-centered is-12-mobile is-3-tablet">Author</div>
         </div>
       </div>
       <div v-for="article of articles" :key="article.node.id">
-        <TheAuthor
+        <TheYear
           :title="article.node.title"
           :slug="article.node.slug"
           :category="article.node.category"
           :tags="article.node.tags"
-          :published="article.node.published"
+          :author="article.node.author.username"
         >
-        </TheAuthor>
+        </TheYear>
       </div>
     </div>
   </div>
@@ -28,21 +26,21 @@
 
 <script>
 import { mapState } from 'vuex';
-import TheAuthor from '../../../../components/TheAuthor';
+import TheYear from '../../../../components/TheYear';
 
 export default {
   components: {
-    TheAuthor,
+    TheYear,
   },
   async asyncData({ params, store }) {
-    await store.dispatch('archives/authors/loadAuthorArticlesByUsername', {
-      username: params.username,
+    await store.dispatch('archives/dates/loadArticlesByYear', {
+      year: params.year,
     });
   },
   computed: {
-    ...mapState('archives/authors', {
-      author: (state) => state.articlesByAuthor.username,
-      articles: (state) => state.articlesByAuthor.articles.edges,
+    ...mapState('archives/dates', {
+      year: (state) => state.articlesByYear[0].node.published.split('-')[0],
+      articles: (state) => state.articlesByYear,
     }),
   },
 };

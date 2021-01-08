@@ -6,11 +6,9 @@
         <div class="column">
           <nuxt-link to="/archive/authors/jack">
             <figure class="image">
-              <img src="~/assets/images/Jack.jpg" class="avatar is-rounded" />
+              <img src="~/assets/images/jack_2.jpg" class="avatar is-rounded" />
             </figure>
-            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-widescreen has-text-centered">
-              Jack
-            </p>
+            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-widescreen has-text-centered">Developer Jack</p>
           </nuxt-link>
           <div class="has-text-justified">
             <p>
@@ -20,7 +18,21 @@
             </p>
           </div>
         </div>
-        <div class="column"></div>
+        <div class="column">
+          <nuxt-link to="/archive/authors/jack">
+            <figure class="image">
+              <img src="~/assets/images/jack_1.jpg" class="avatar is-rounded" />
+            </figure>
+            <p class="title is-size-6-mobile is-size-4-tablet is-size-3-widescreen has-text-centered">Captain Jack</p>
+          </nuxt-link>
+          <div class="has-text-justified">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, dicta rerum reiciendis magnam
+              aliquam sapiente? Voluptates blanditiis tempora deserunt molestiae reiciendis voluptas soluta error,
+              aliquid ipsa repellat quo debitis dignissimos.
+            </p>
+          </div>
+        </div>
       </div>
     </article>
   </div>

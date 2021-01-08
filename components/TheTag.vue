@@ -17,7 +17,7 @@
         </nuxt-link>
       </div>
       <div class="column has-text-centered is-12-mobile is-3-tablet">
-        <nuxt-link to="/archive/year">
+        <nuxt-link :to="`/archive/dates/${published.split('-')[0]}`">
           {{ $moment(published).from() }}
         </nuxt-link>
       </div>

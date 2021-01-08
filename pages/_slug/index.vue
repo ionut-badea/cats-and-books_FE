@@ -32,7 +32,9 @@
           </div>
           <h2 class="subtitle is-size-6-mobile is-size-5-tablet is-size-4-desktop">
             published
-            <strong>{{ $moment(article.published).from() }}</strong>
+            <nuxt-link :to="`archive/dates/${article.published.split('-')[0]}`">
+              <strong>{{ $moment(article.published).from() }}</strong>
+            </nuxt-link>
           </h2>
         </div>
         <div class="column has-text-centered is-12-mobile is-3-tablet">
@@ -69,9 +71,7 @@
         <form method="POST">
           <div class="columns is-centered">
             <div class="column has-text-centered is-12-mobile is-8-tablet is-6-desktop">
-              <h2 class="subtitle is-size-5-mobile is-size-4-tablet">
-                Leave us a message
-              </h2>
+              <h2 class="subtitle is-size-5-mobile is-size-4-tablet">Leave us a message</h2>
               <div class="field">
                 <div class="control">
                   <ValidationProvider v-slot="{ errors, classes }" rules="required|no_quotes">
@@ -109,21 +109,15 @@
               <div class="field">
                 <div class="control">
                   <input id="checkbox" v-model="save" name="save" type="checkbox" class="checkbox has-text-left" />
-                  <label for="checkbox">
-                    Save my name in this browser for the next time I comment.
-                  </label>
+                  <label for="checkbox"> Save my name in this browser for the next time I comment. </label>
                 </div>
               </div>
               <div class="field is-grouped">
                 <div class="control">
-                  <button type="submit" class="button is-primary" @click.prevent="handleSubmit(send)">
-                    Send
-                  </button>
+                  <button type="submit" class="button is-primary" @click.prevent="handleSubmit(send)">Send</button>
                 </div>
                 <div class="control">
-                  <button type="reset" class="button is-danger" @click.prevent="cancel">
-                    Cancel
-                  </button>
+                  <button type="reset" class="button is-danger" @click.prevent="cancel">Cancel</button>
                 </div>
               </div>
             </div>
